@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Meu Form</title>
+	</head>
+	<body>
+		<form action="recebe_form.html" method="get">
+			<label>Nome</label>
+			<input type="password" name="nome" placeholder="Digite seu nome">
+			<label>Idade</label>			
+			<input type="number" name="idade" disabled>
+			<label>Sexo</label>	
+			<input type="radio" name="sexo" value="M"><span>M</span>
+			<input type="radio" name="sexo" value="F" checked><span>F</span>
+			<label>Curso</label>
+			<select name="curso">
+				<option>Selecione o Curso</option>
+				<option value="1">Java</option>
+				<option value="2">C#</option>				
+				<option value="3">C++</option>				
+			</select>
+			<label>Mensagem</label>
+			<textarea rows="10"  cols="20"></textarea>
+			<label>Anexo</label>
+			<input type="file" name="arquivo">
+			<label>Meios de Resposta</label>
+			<input type="checkbox" name="meio_de_resposta" value="email"><span>e-mail</span>
+			<input type="checkbox"name="meio_de_resposta" value="telefone">
+			<span>telefone</span>
+			<input type="submit" value="Enviar">
+			<input type="reset" value="limpar">						
+		</form>
+	</body>
+</html>
