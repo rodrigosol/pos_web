@@ -1,0 +1,288 @@
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.5ms)[0m  select sqlite_version(*)
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateNomes (20140930225526)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "nomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "idade" integer, "email" varchar(255), "msg" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140930225526"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreatePessoas (20140930225634)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "pessoas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "idade" integer, "email" varchar(255), "msg" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140930225634"]]
+  [1m[36m (8.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/pessoas" for 127.0.0.1 at 2014-09-30 19:56:56 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PessoasController#index as HTML
+  [1m[35mPessoa Load (0.1ms)[0m  SELECT "pessoas".* FROM "pessoas"
+  Rendered pessoas/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 662ms (Views: 643.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/nomes.css?body=1" for 127.0.0.1 at 2014-09-30 19:56:57 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-09-30 19:56:57 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-09-30 19:56:57 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-09-30 19:56:57 -0300
+
+
+Started GET "/assets/pessoas.css?body=1" for 127.0.0.1 at 2014-09-30 19:56:57 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-09-30 19:56:57 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-09-30 19:56:57 -0300
+
+
+Started GET "/assets/nomes.js?body=1" for 127.0.0.1 at 2014-09-30 19:56:57 -0300
+
+
+Started GET "/assets/pessoas.js?body=1" for 127.0.0.1 at 2014-09-30 19:56:57 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-09-30 19:56:57 -0300
+
+
+Started GET "/pessoas/new" for 127.0.0.1 at 2014-09-30 19:56:59 -0300
+Processing by PessoasController#new as HTML
+  Rendered pessoas/_form.html.erb (24.0ms)
+  Rendered pessoas/new.html.erb within layouts/application (35.7ms)
+Completed 200 OK in 80ms (Views: 77.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/pessoas" for 127.0.0.1 at 2014-09-30 19:57:09 -0300
+Processing by PessoasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6kQSaA0VN/+vLTpb4La41trkpaNkBQ+Ke7+aB9dw0kc=", "pessoa"=>{"nome"=>"teste", "idade"=>"10", "email"=>"rodrigosol@gmail.com", "msg"=>"teste"}, "commit"=>"Create Pessoa"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "pessoas" ("created_at", "email", "idade", "msg", "nome", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2014-09-30 22:57:09.803764"], ["email", "rodrigosol@gmail.com"], ["idade", 10], ["msg", "teste"], ["nome", "teste"], ["updated_at", "2014-09-30 22:57:09.803764"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3001/pessoas/1
+Completed 302 Found in 6ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/pessoas/1" for 127.0.0.1 at 2014-09-30 19:57:09 -0300
+Processing by PessoasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPessoa Load (0.2ms)[0m  SELECT  "pessoas".* FROM "pessoas"  WHERE "pessoas"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pessoas/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 79ms (Views: 76.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/nomes.css?body=1" for 127.0.0.1 at 2014-09-30 19:57:09 -0300
+
+
+Started GET "/assets/pessoas.css?body=1" for 127.0.0.1 at 2014-09-30 19:57:09 -0300
+
+
+Started GET "/assets/nomes.js?body=1" for 127.0.0.1 at 2014-09-30 19:57:09 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-09-30 19:57:09 -0300
+
+
+Started GET "/assets/pessoas.js?body=1" for 127.0.0.1 at 2014-09-30 19:57:09 -0300
+
+
+Started GET "/pessoas" for 127.0.0.1 at 2014-09-30 19:57:11 -0300
+Processing by PessoasController#index as HTML
+  [1m[36mPessoa Load (0.2ms)[0m  [1mSELECT "pessoas".* FROM "pessoas"[0m
+  Rendered pessoas/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 50ms (Views: 49.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/pessoas/new" for 127.0.0.1 at 2014-09-30 19:57:13 -0300
+Processing by PessoasController#new as HTML
+  Rendered pessoas/_form.html.erb (4.3ms)
+  Rendered pessoas/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 53ms (Views: 52.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pessoas" for 127.0.0.1 at 2014-09-30 19:57:20 -0300
+Processing by PessoasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6kQSaA0VN/+vLTpb4La41trkpaNkBQ+Ke7+aB9dw0kc=", "pessoa"=>{"nome"=>"d;flsdfsd", "idade"=>"10", "email"=>"lima@rarolabs.com.br", "msg"=>"sdfsdfs"}, "commit"=>"Create Pessoa"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "pessoas" ("created_at", "email", "idade", "msg", "nome", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-30 22:57:20.243597"], ["email", "lima@rarolabs.com.br"], ["idade", 10], ["msg", "sdfsdfs"], ["nome", "d;flsdfsd"], ["updated_at", "2014-09-30 22:57:20.243597"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3001/pessoas/2
+Completed 302 Found in 3ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/pessoas/2" for 127.0.0.1 at 2014-09-30 19:57:20 -0300
+Processing by PessoasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPessoa Load (0.1ms)[0m  [1mSELECT  "pessoas".* FROM "pessoas"  WHERE "pessoas"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered pessoas/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 44ms (Views: 42.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/nomes.css?body=1" for 127.0.0.1 at 2014-09-30 19:57:20 -0300
+
+
+Started GET "/assets/pessoas.css?body=1" for 127.0.0.1 at 2014-09-30 19:57:20 -0300
+
+
+Started GET "/assets/pessoas.js?body=1" for 127.0.0.1 at 2014-09-30 19:57:20 -0300
+
+
+Started GET "/assets/nomes.js?body=1" for 127.0.0.1 at 2014-09-30 19:57:20 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-09-30 19:57:20 -0300
+
+
+Started GET "/pessoas" for 127.0.0.1 at 2014-09-30 19:58:05 -0300
+Processing by PessoasController#index as HTML
+  [1m[35mPessoa Load (0.3ms)[0m  SELECT "pessoas".* FROM "pessoas"
+  Rendered pessoas/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 49ms (Views: 46.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/pessoas/new" for 127.0.0.1 at 2014-09-30 19:58:06 -0300
+Processing by PessoasController#new as HTML
+  Rendered pessoas/_form.html.erb (3.8ms)
+  Rendered pessoas/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 57ms (Views: 55.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pessoas" for 127.0.0.1 at 2014-09-30 19:58:18 -0300
+Processing by PessoasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6kQSaA0VN/+vLTpb4La41trkpaNkBQ+Ke7+aB9dw0kc=", "pessoa"=>{"nome"=>"Joao", "idade"=>"10", "email"=>"rodrigosol@gmail.com", "msg"=>"teste"}, "commit"=>"Create Pessoa"}
+Completed 500 Internal Server Error in 4ms
+
+NameError (undefined local variable or method `byebug' for #<PessoasController:0x00000102a542d8>):
+  app/controllers/pessoas_controller.rb:27:in `create'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.9ms)
+
+
+Started POST "/pessoas" for 127.0.0.1 at 2014-09-30 19:58:39 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PessoasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6kQSaA0VN/+vLTpb4La41trkpaNkBQ+Ke7+aB9dw0kc=", "pessoa"=>{"nome"=>"Joao", "idade"=>"10", "email"=>"rodrigosol@gmail.com", "msg"=>"teste"}, "commit"=>"Create Pessoa"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "pessoas" ("created_at", "email", "idade", "msg", "nome", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2014-09-30 22:59:31.791011"], ["email", "rodrigosol@gmail.com"], ["idade", 10], ["msg", "teste"], ["nome", "Joao"], ["updated_at", "2014-09-30 22:59:31.791011"]]
+  [1m[35m (8.9ms)[0m  commit transaction
+Redirected to http://localhost:3001/pessoas/3
+Completed 302 Found in 51725ms (ActiveRecord: 10.4ms)
+
+
+Started GET "/pessoas/3" for 127.0.0.1 at 2014-09-30 19:59:31 -0300
+Processing by PessoasController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPessoa Load (0.3ms)[0m  [1mSELECT  "pessoas".* FROM "pessoas"  WHERE "pessoas"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pessoas/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 246ms (Views: 240.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/nomes.css?body=1" for 127.0.0.1 at 2014-09-30 19:59:32 -0300
+
+
+Started GET "/assets/pessoas.css?body=1" for 127.0.0.1 at 2014-09-30 19:59:32 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-09-30 19:59:32 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-09-30 19:59:32 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-09-30 19:59:32 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-09-30 19:59:32 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-09-30 19:59:32 -0300
+
+
+Started GET "/assets/nomes.js?body=1" for 127.0.0.1 at 2014-09-30 19:59:32 -0300
+
+
+Started GET "/assets/pessoas.js?body=1" for 127.0.0.1 at 2014-09-30 19:59:32 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-09-30 19:59:32 -0300
+
+
+Started POST "/pessoas" for 127.0.0.1 at 2014-09-30 20:00:02 -0300
+Processing by PessoasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6kQSaA0VN/+vLTpb4La41trkpaNkBQ+Ke7+aB9dw0kc=", "pessoa"=>{"nome"=>"", "idade"=>"10", "email"=>"rodrigosol@gmail.com", "msg"=>"teste"}, "commit"=>"Create Pessoa"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  Rendered pessoas/_form.html.erb (22.8ms)
+  Rendered pessoas/new.html.erb within layouts/application (27.3ms)
+Completed 200 OK in 4134ms (Views: 190.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/nomes.css?body=1" for 127.0.0.1 at 2014-09-30 20:00:06 -0300
+
+
+Started GET "/assets/pessoas.css?body=1" for 127.0.0.1 at 2014-09-30 20:00:06 -0300
+
+
+Started GET "/assets/nomes.js?body=1" for 127.0.0.1 at 2014-09-30 20:00:06 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-09-30 20:00:06 -0300
+
+
+Started GET "/assets/pessoas.js?body=1" for 127.0.0.1 at 2014-09-30 20:00:06 -0300
+
+
+Started GET "/assets/nomes.css?body=1" for 127.0.0.1 at 2014-09-30 20:00:26 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-09-30 20:00:26 -0300
+
+
+Started GET "/assets/pessoas.css?body=1" for 127.0.0.1 at 2014-09-30 20:00:26 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-09-30 20:00:26 -0300
+
+
+Started POST "/pessoas" for 127.0.0.1 at 2014-09-30 20:01:30 -0300
+Processing by PessoasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6kQSaA0VN/+vLTpb4La41trkpaNkBQ+Ke7+aB9dw0kc=", "pessoa"=>{"nome"=>"", "idade"=>"10", "email"=>"rodrigosol@gmail.com", "msg"=>"teste"}, "commit"=>"Create Pessoa"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  Rendered pessoas/_form.html.erb (15.0ms)
+  Rendered pessoas/new.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 28528ms (Views: 232.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/nomes.css?body=1" for 127.0.0.1 at 2014-09-30 20:01:59 -0300
+
+
+Started GET "/assets/pessoas.css?body=1" for 127.0.0.1 at 2014-09-30 20:01:59 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-09-30 20:01:59 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-09-30 20:01:59 -0300
+
+
+Started GET "/assets/pessoas.js?body=1" for 127.0.0.1 at 2014-09-30 20:01:59 -0300
+
+
+Started GET "/assets/nomes.js?body=1" for 127.0.0.1 at 2014-09-30 20:01:59 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-09-30 20:01:59 -0300

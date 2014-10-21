@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"> 
+		<style>
+			.campo{
+				display:block;
+				margin:10px 15px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<form action="grava.html" method="post" onsubmit="return valida_form()">
+			<div class="campo">
+				<label>Nome</label>
+				<input type="text" name="nome" id="nome" >
+			</div>
+			<div class="campo">
+				<label>Idade</label>
+				<input type="number" name="idade" id="idade" min="18" max="120">
+			</div>	
+			<input type="submit" value="ok">
+			<input type="reset" value="limpar">
+		</form>
+	</body>
+</html>
+
+<script type="text/javascript">
+	function valida_form(){
+		var nome = document.getElementById("nome").value;
+		var idade = document.getElementById("idade").value;
+		console.log("Nome:" + nome);
+		console.log("Idade:" + idade);
+		
+		var erros = "";
+		
+		if(nome == ""){
+			erros += "Você deve preencher o nome.\n";
+		}else{
+			if(nome.length > 30){
+				erros += "Nome muito grande!.\n";
+			}
+			if(nome.toLowerCase().indexOf("joao") > 0){
+				erros += "Joao não pode ser aceito!";
+			}
+		}
+		
+		if(idade == ""){
+			erros += "Você deve preencher a idade";
+		}else{
+			idade = parseInt(idade);
+			if(!(idade >= 18 && idade <= 120)){
+				erros += "Idade inválida";
+			}
+		}
+		
+		if(erros!= ""){
+			alert(erros);
+			return false;
+		}else{
+			return true;
+		}
+
+	}
+</script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="scripts/jquery.min.js"></script>
+		<link rel="stylesheet" href="styles/jquery-ui.css" />
+		<script src="scripts/jquery-ui.min.js"></script>		
+
+		<link href="styles/bootstrap.min.css" rel="stylesheet"/>
+
+		<script src="scripts/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<h1>Qual é o número que estou pensado?</h1>
+			</div>
+			<div class="row alert alert-info">
+				<div class="col-xs-4">Meu Palpite</div>
+				<div class="col-xs-4"><input type="number" id="valor"></div>					
+				<div class="col-xs-4">
+					<button class="btn btn-primary" id="enviar">Enviar</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="alert alert-warning" id="resultado">
+					<h2>O número é menor que o informado</h2>
+				</div>
+			<button class="btn btn-success pull-right" id="novo">Novo Jogo</button>
+
+			</div>
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	
+	function Jogo(){
+		this.tentativas = 0;
+		this.sorteado = null;
+
+		this.novo_jogo = function(){
+			this.tentativas = 0;
+			this.sorteado = Math.floor((Math.random() * 100) + 1);
+		}
+		
+		this.tentar = function(palpite){
+			if(palpite == this.sorteado){
+				$('#resultado').html("Você venceu!");
+			}else if(palpite > this.sorteado){
+				$('#resultado').html("O número sorteado é menor!");
+			}else{
+				$('#resultado').html("O número sorteado é maior!");
+			}
+		}
+	}
+	
+	var j = new Jogo();
+	j.novo_jogo();
+	$('#enviar').click(function(){
+		j.tentar(parseInt($('#valor').val()));
+	})
+	
+	
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
