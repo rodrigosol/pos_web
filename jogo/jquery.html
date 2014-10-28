@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="scripts/jquery.min.js"></script>
+		<link rel="stylesheet" href="styles/jquery-ui.css" />
+		<script src="scripts/jquery-ui.min.js"></script>		
+
+		<link href="styles/bootstrap.min.css" rel="stylesheet"/>
+
+		<script src="scripts/bootstrap.min.js"></script>
+		<style>
+			h2{display:inline;}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<form class="">
+				<label>Nome</label><input type="text" name="nome" id="nome">
+				<button>Ok</button>
+			</form>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Nome</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Joao</td>
+					</tr>
+					<tr>
+						<td>Joao IV</td>
+					</tr>
+
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>1 Registro(s) cadastrado</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+	</body>
+</html>
+<script>
+	function cor_aleatoria(){
+		dados = ['0','1','2','3','A','C','F']
+		cor = "#";
+		for(i=0;i<7;i++){
+			cor+= dados[Math.floor((Math.random() * 6))];
+		}
+		return cor;
+	}
+	$('document').ready(function(){
+		$('tr').click(function(){
+			$(this).css('background-color',cor_aleatoria());
+		})
+		
+		$('tr:even').css({
+										 'background-color':'#ccc',
+		                 'color':'red'
+									   }
+									 )
+		
+	})
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
