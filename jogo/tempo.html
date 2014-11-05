@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="scripts/jquery.min.js"></script>
+		<link rel="stylesheet" href="styles/jquery-ui.css" />
+		<script src="scripts/jquery-ui.min.js"></script>		
+
+		<link href="styles/bootstrap.min.css" rel="stylesheet"/>
+
+		<script src="scripts/bootstrap.min.js"></script>
+		<style>
+			h2{display:inline;}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<form class="">
+				<label>Nome</label><input type="text" name="nome" id="nome">
+				<button>Ok</button>
+			</form>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Nome</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Joao</td>
+					</tr>
+					<tr>
+						<td>Joao IV</td>
+					</tr>
+
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>1 Registro(s) cadastrado</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+	</body>
+</html>
+<script>
+jQuery(document).ready(function($) {
+  $.ajax({
+  url : "http://api.wunderground.com/api/Your_Key/geolookup/conditions/q/IA/Cedar_Rapids.json",
+  dataType : "jsonp",
+  success : function(parsed_json) {
+  var location = parsed_json['location']['city'];
+  var temp_f = parsed_json['current_observation']['temp_f'];
+  alert("Current temperature in " + location + " is: " + temp_f);
+  }
+  });
+});
+</script>

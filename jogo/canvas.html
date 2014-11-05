@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="scripts/jquery.min.js"></script>
+		<link rel="stylesheet" href="styles/jquery-ui.css" />
+		<script src="scripts/jquery-ui.min.js"></script>		
+
+		<link href="styles/bootstrap.min.css" rel="stylesheet"/>
+
+		<script src="scripts/bootstrap.min.js"></script>
+		<style>
+			#canvas{
+				width:300px;
+				height:200px;
+				border:2px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+	</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+	window.ctx = document.getElementById('canvas').getContext('2d')
+	window.ctx.fillStyle="red"
+	
+		$('#canvas').on('mousemove',function(e){
+			currX = e.clientX - document.getElementById('canvas').offsetLeft;
+			currY = e.clientY - document.getElementById('canvas').offsetTop;
+			window.ctx.fillStyle="red"
+			window.ctx.fillRect(currX,currY,1,1);
+
+			
+			console.log(e.clientX)
+			console.log(e)
+		})
+	})
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
