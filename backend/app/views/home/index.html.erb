@@ -1,0 +1,28 @@
+<strong>Horas:</strong><span id="hora"><%=DateTime.now%></span>
+<button onclick="atualiza()">Atualizar</button>
+
+<script type="text/javascript">
+	function atualiza(){
+		var req = new XMLHttpRequest();
+		req.onreadystatechange = function(){
+			if(req.readyState == 4){
+				document.getElementById('hora').innerHTML = req.responseText;
+			}
+		}
+
+		req.open('GET','/home/time',true);
+		req.send(null);
+	}
+</script>
+
+		 <script type="text/javascript">
+		 		setInterval(function(){
+		 			$.ajax({
+		 			  url: "/home/time",
+		 			  success: function(data){
+		 			  	$('#hora').html(data);
+		 			  },
+		 			});
+		 		},5000);
+		 </script>
+

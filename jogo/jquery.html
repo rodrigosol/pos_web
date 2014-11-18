@@ -54,16 +54,11 @@
 		return cor;
 	}
 	$('document').ready(function(){
-		$('tr').click(function(){
-			$(this).css('background-color',cor_aleatoria());
+		$.ajax('http://rarolabs.com.br:88/alunos.json').success(function(data){
+			data.forEach(function(e,i){
+				console.log(e);
+			});
 		})
-		
-		$('tr:even').css({
-										 'background-color':'#ccc',
-		                 'color':'red'
-									   }
-									 )
-		
 	})
 </script>
 
